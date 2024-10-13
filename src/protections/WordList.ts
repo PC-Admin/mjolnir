@@ -88,7 +88,7 @@ export class WordList extends Protection {
                 }
             }
             if (!this.badWords) {
-                const useRegexps = mjolnir.config.protections.wordlist.useRegexps || false;
+                const enableRegexps = mjolnir.config.protections.wordlist.enableRegexps || false;
                 const words = mjolnir.config.protections.wordlist.words.filter((word) => word.length !== 0);
 
                 if (words.length === 0) {
@@ -101,7 +101,7 @@ export class WordList extends Protection {
                     return;
                 }
 
-                if (useRegexps) {
+                if (enableRegexps) {
                     this.badWords = new RegExp(words.join("|"), "i");
                 } else {
                     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping
