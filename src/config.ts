@@ -229,9 +229,9 @@ const defaultConfig: IConfig = {
     },
     protections: {
         wordlist: {
+            enableRegexps: false,
             words: [],
             minutesBeforeTrusting: 20,
-            enableRegexps: false
         },
     },
     health: {

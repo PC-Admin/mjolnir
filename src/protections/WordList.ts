@@ -102,7 +102,11 @@ export class WordList extends Protection {
                 }
 
                 if (enableRegexps) {
-                    this.badWords = new RegExp(words.join("|"), "i");
+                    const safeWords = words.map(word => {
+                        // Escape all words, treating them as literal strings
+                        return RegExp.escape(word);
+                    });
+                    this.badWords = new RegExp(safeWords.join("|"), "i");
                 } else {
                     // See https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#escaping
                     const escapeRegExp = (string: string) => {
